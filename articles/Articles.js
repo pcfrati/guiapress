@@ -12,8 +12,11 @@ const Article = connection.define('articles', {
     },body:{
         type: Sequelize.TEXT,
         allowNull: false
+    },categoryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
-})
+});
 
 Category.hasMany(Article); Article.belongsTo(Category);
 
