@@ -8,7 +8,7 @@ router.get("/admin/categories/new",(req, res) => {
 });
 
 router.post("/categories/save", (req,res) => {
-    const title = req.body.title;
+    var title = req.body.title;
     console.log("Título recebido:", title);
 
     if (title != undefined && title.trim() !== "") {
@@ -38,9 +38,9 @@ router.get("/admin/categories", (req, res) => {
 });
 
 router.post("/categories/delete", (req, res) => {
-    const id = req.body.id;
+    var id = req.body.id;
 
-    if (id != undefined && !isNaN(id) && title.trim() !== "") {
+    if (id != undefined && !isNaN(id)) {
         Category.destroy({
             where: { id: id }
         }).then(() => {
@@ -55,9 +55,10 @@ router.post("/categories/delete", (req, res) => {
     }
 });
 
+
 router.post("/categories/update", (req, res) => {
-    const id = req.body.id;
-    const title = req.body.title;
+    var id = req.body.id;
+    var title = req.body.title;
 
     if (id != undefined && !isNaN(id)) {
         Category.update({
@@ -79,14 +80,14 @@ router.post("/categories/update", (req, res) => {
 
 
 router.get("/admin/categories/edit/:id", (req, res) => {
-    const id = req.params.id;
+    var id = req.params.id;
 
     if (!isNaN(id)) {
         Category.findAll({
             where: { id: id }
         }).then(categories => {
             if (categories.length > 0) {
-                const category = categories[0];
+                var category = categories[0];
                 res.render("admin/categories/edit", {category});
             } else {
                 res.redirect("/admin/categories");
