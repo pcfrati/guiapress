@@ -1,6 +1,36 @@
 <%- include ("partials/header.ejs") %>
-<%- include ("partials/navbar.ejs") %>
-<body>
-    <h1>Bem vindo!</h1>
-</body>
-<%- include ("partials/footer.ejs") %>
+    <%- include ("partials/navbar.ejs") %>
+
+        <body>
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="display-4">Bem vindo!</h1>
+                    <p class="lead">Este é um simples blog sobre legumes, verduras e frutas.</p>
+                    <hr class="my-4">
+                    <p>Frutas, legumes e verduras são essenciais para uma alimentação equilibrada. Ricas em vitaminas, minerais e fibras, ajudam no bom funcionamento do corpo, fortalecem o sistema imunológico e previnem doenças. Além de nutritivos, esses alimentos são coloridos, saborosos e versáteis, podendo ser consumidos crus, cozidos ou em sucos e saladas. Incluir uma variedade deles nas refeições diárias é um passo simples e poderoso para cuidar da saúde.
+                    </p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
+                </div>
+                <br>
+                <% articles.forEach(article=> { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <%= article.title %>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="/<%= article.slug %>" class="btn btn-success">Ler artigo</a>
+
+                        </div>
+                        
+                    </div>
+                    <br>
+
+                    <% }) %>
+            </div>
+
+
+            <%- include ("partials/footer.ejs") %>
+
+        </body>
